@@ -48,20 +48,6 @@ export const ProductsContainer = () => {
                 total: state.total + addedProduct.price
             };
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
             return{
                 ...state,
                 productData : updatedDataAdd,
@@ -72,12 +58,9 @@ export const ProductsContainer = () => {
 
         else if(action.type == "sub"){
             let total = state.total;
-            const updatedDataAdd = state.productData.map((items , idx)=>{
+            const updatedDataSub = state.productData.map((items , idx)=>{
                 if(action.payload.index === idx){
-                    if(items.quantity == 0){
-                        alert("you haven't add any product yet!")
-                         return
-                    }
+                   
                     items.quantity = action.payload.quantity-1;
                     total-=items.price;
                 }
@@ -85,7 +68,8 @@ export const ProductsContainer = () => {
             })
 
             return{
-                productData : updatedDataAdd,
+                productData : updatedDataSub,
+                cart : state.cart,
                 total : total
             }
         }
@@ -95,7 +79,14 @@ export const ProductsContainer = () => {
         
         }
 
-    
+
+        
+
+
+
+
+
+
 
 
     const initial = {
